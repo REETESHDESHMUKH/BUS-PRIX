@@ -1,0 +1,75 @@
+{% extends 'ticket/basic.html' %}
+
+{% block title%} BUS-LIST {% endblock %}
+{% block css %}
+.navbar {
+padding: 15px;
+}
+
+svg {
+height: 34px;
+fill: white;
+}
+
+.head {
+background-color: burlywood;
+
+}
+.form-label{
+text-decoration: black;
+}
+.card{
+padding:30px 28px;
+}
+.card-body{
+display:flex;
+justify-content:center;
+}
+.cards{
+margin:0px 14px;
+}
+.list{
+height:600px;
+}
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="align-items-center list">
+     {% for i in list%}
+    <div class="card">
+        <div class="card-header fw-bold" style="text-align:center">
+            {{i.bus_rou.bus_name}}
+        </div>
+        <div class="card-body">
+            <div class="cards">
+                <h5 class="card-title">TYPE</h5>
+                <p class="card-text">{{i.bus_rou.type}}</p>
+            </div>
+            <div class="cards">
+                <h5 class="card-title">NUMBER OF SEATS</h5>
+                <p class="card-text">{{i.bus_rou.number_seats}}</p>
+            </div>
+            <div class="cards">
+                <h5 class="card-title">DATE</h5>
+                <p class="card-text">18/07/2020</p>
+            </div>
+            <div class="cards">
+                <h5 class="card-title">FROM</h5>
+                <p class="card-text">{{i.origin}}</p>
+            </div>
+            <div class="cards">
+                <h5 class="card-title">TO</h5>
+                <p class="card-text">{{i.destination}}</p>
+            </div>
+            <div class="cards">
+                <h5 class="card-title">COST</h5>
+                <p class="card-text">{{i.cost}}</p>
+            </div>
+            <a href="/ticketBooking/{{i.id}}" class="btn btn-danger fw-bold mx-5">BOOK YOUR TICKET</a>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+
+{% endblock %}

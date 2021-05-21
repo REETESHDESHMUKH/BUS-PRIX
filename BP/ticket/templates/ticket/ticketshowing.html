@@ -1,0 +1,75 @@
+{% extends 'ticket/basic.html' %}
+
+{% block title%} tickets {% endblock %}
+{% block css %}
+.navbar {
+padding: 15px;
+}
+
+svg {
+height: 34px;
+fill: white;
+}
+
+.head {
+background-color: burlywood;
+
+}
+.form-label{
+text-decoration: black;
+}
+.card{
+padding:30px 28px;
+}
+.card-body{
+display:flex;
+justify-content:center;
+}
+.cards{
+margin:0px 14px;
+}
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="align-items-center">
+    {% for i in fin %}
+    <div class="card">
+        <div class="card-header fw-bold" style="text-align:center">
+            Passengers Details
+        </div>
+        <div class="card-body">
+            <div class="cards">
+                <h6 class="card-title">NAME</h6>
+                <p class="card-text">{{i.pass_id.passenger_name}}</p>
+            </div>
+            <div class="cards">
+                <h6 class="card-title">CONTACT</h6>
+                <p class="card-text">{{i.pass_id.contact_no}}</p>
+            </div>
+            <div class="cards">
+                <h6 class="card-title">CITY</h6>
+                <p class="card-text">{{i.pass_id.city}}</p>
+            </div>
+            <div class="cards">
+                <h6 class="card-title">EMAIL</h6>
+                <p class="card-text">{{i.pass_id.email}}</p>
+            </div>
+            <div class="cards">
+                <h6 class="card-title">BOOKING STATUS</h6>
+                <p class="card-text">Booked</p>
+            </div>
+            <div class="cards">
+                <h6 class="card-title">ORIGIN</h6>
+                <p class="card-text">{{i.sch_id.route.origin}}</p>
+            </div>
+            <div class="cards">
+                <h6 class="card-title">DESTINATION</h6>
+                <p class="card-text">{{i.sch_id.route.destination}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+
+{% endblock %}

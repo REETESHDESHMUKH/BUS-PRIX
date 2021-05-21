@@ -1,0 +1,81 @@
+{% extends 'ticket/basic.html' %}
+
+{% block title%} BUS-TICKET BOOKING {% endblock %}
+{% block css %}
+.navbar {
+padding: 15px;
+}
+
+svg {
+height: 34px;
+fill: white;
+}
+
+.head {
+background-color: burlywood;
+
+}
+.form-label{
+text-decoration: black;
+}
+.card{
+padding:30px 28px;
+}
+.form-control{
+padding:10px 13px;
+}
+.card-body{
+display:flex;
+justify-content:center;
+}
+.cards{
+margin:0px 14px;
+}
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="container ">
+    <h2 class="fw-bold" STYLE="text-align:center">PASSENGERS DETAILS</h2>
+    <hr class="featurette-divider">
+         {% for i in rou %}
+    <form action="/bookedTicket/{{i.id}}" method="POST">
+        {% csrf_token %}
+        <div class="form-group fw-bold my-2">
+            <label for="passenger_name">Name</label>
+            <input type="text" class="form-control my-3" id="passenger_name" name="passenger_name"
+                   placeholder="Enter Your Name">
+        </div>
+        <div class="form-group fw-bold my-2">
+            <label for="image">ID-PROOF</label>
+            <input type="file" class="form-control-file mx-5 my-3" id="image" name="image">
+        </div>
+        <div class="form-group fw-bold my-2">
+            <label for="contact_no">Phone</label>
+            <input type="tel" class="form-control my-3" id="contact_no" name="contact_no" placeholder="Enter Your Phone Number">
+        </div>
+       <div class="form-group fw-bold my-2">
+            <label for="city">City</label>
+            <input type="text" class="form-control my-3" id="city" name="city" placeholder="Enter Your city">
+        </div>
+        <div class="form-group fw-bold my-2">
+            <label for="email">Email</label>
+            <input type="email" class="form-control my-3" id="email" name="email" placeholder="Enter Your email">
+        </div>
+        <div class="form-group fw-bold my-2">
+            <label for="date">Date</label>
+            <input type="date" class="form-control my-3" id="date" name="date" placeholder="Date">
+        </div>
+        <div class="form-group fw-bold my-2">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control my-3" id="password1" name="password1" placeholder="Enter Your password">
+        </div>
+        <div class="form-group fw-bold my-2">
+            <label for="password2">Confirm password</label>
+            <input type="password" class="form-control my-3" id="password2" name="password2" placeholder="Enter Your password">
+        </div>
+        <button type="submit" class="btn-lg btn-danger my-5">Book</button>
+    </form>
+</div>
+    {% endfor %}
+{% endblock %}

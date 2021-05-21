@@ -1,0 +1,126 @@
+{% extends 'ticket/basic.html' %}
+
+{% block title%} SEARCH {% endblock %}
+{% block css %}
+.navbar {
+padding: 15px;
+}
+
+svg {
+height: 34px;
+fill: white;
+}
+
+.head {
+background-color: floralwhite;
+
+}
+.form-control{
+padding:10px 13px;
+}
+{% endblock %}
+
+{% block body %}
+{% load static %}
+{% for message in messages %}
+<div class="alert alert-success d-flex alert-dismissible align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+  </symbol>
+    </svg>
+    <div class="alert alert-success d-flex align-items-center" style="padding:0px 0px" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="20" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+  <div>
+    {{message}}
+  </div>
+</div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">SEARCH!</h1>
+      <form action="/list/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group my-5 fw-bold">
+                        <label for="origin">FROM</label>
+                        <select class="form-control my-2" id="origin" name="origin">
+                            {% for i in stop %}
+                            <option>{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group my-5 fw-bold">
+                        <label for="destination">TO</label>
+                        <select class="form-control my-2" id="destination" name="destination">
+                           {% for i in stop %}
+                            <option>{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-lg btn-danger">Submit</button>
+                </form>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal my-md-3 ps-md-3">
+    <div class="bg-danger me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="width:50%">
+      <div class="my-3 py-3">
+        <h2 class="display-5">SAFETY</h2>
+        <p class="lead">set of measures like Sanitized buses</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 357px; border-radius: 21px 21px 0 0;">
+      </div>
+    </div>
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="width:50%">
+      <div class="my-3 p-3">
+        <h2 class="display-5">CUSTOMER SERVICE</h2>
+        <p class="lead">all time available to solve your travel issues..</p>
+      </div>
+      <div class="bg-danger shadow-sm mx-auto" style="width: 80%; height: 357px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+      <div class="bg-danger me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="width:50%">
+      <div class="my-3 p-3">
+        <h2 class="display-5">LOWEST PRICES</h2>
+        <p class="lead">give you the lowest price with the best partner</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 357px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+  </div>
+
+<!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:1000px" id="contact">
+    <h1 class="w3-wide w3-center" style="font-size:50px">CONTACT</h1>
+    <p class="w3-opacity w3-center"><i>Any problem ? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker my-1" style="width:37px"></i> Madhya Pradesh, India<br>
+        <i class="fa fa-phone my-1" style="width:37px"></i> Phone: +xxxxxxxxxx<br>
+        <i class="fa fa-envelope my-1" style="width:37px"> </i> Email: reeteshdeshmukhbpl@gmail.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="/help/" method="POST" >
+            {% csrf_token %}
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="email" placeholder="Email" name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- End Page Content -->
+</div>
+
+{% endblock %}
