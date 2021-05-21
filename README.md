@@ -14,6 +14,10 @@ Back-end development using Django ​
 Used MYSQL for database​
 
 ![BUS-LIST - Google Chrome 21-05-2021 20_10_42](https://user-images.githubusercontent.com/76653982/119163301-e7a31a80-ba78-11eb-921f-b7f900e29ca9.png)
+---
 ![SEARCH - Google Chrome 21-05-2021 20_02_54](https://user-images.githubusercontent.com/76653982/119163438-09040680-ba79-11eb-91fc-36d3e51a2ead.png)
+---
 ![SEARCH - Google Chrome 21-05-2021 20_07_22](https://user-images.githubusercontent.com/76653982/119163446-0acdca00-ba79-11eb-8ef8-90c0dcb04b0c.png)
+---
 ![image](https://user-images.githubusercontent.com/76653982/119163708-4b2d4800-ba79-11eb-8da2-77ba7845bb86.png)
+---
