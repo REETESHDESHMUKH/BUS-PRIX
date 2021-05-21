@@ -1,0 +1,57 @@
+from django.db import models
+
+# Create your models here.
+class Bus(models.Model):
+    id = models.AutoField
+    bus_name = models.CharField(max_length=50, default="")
+    type = models.CharField(max_length=50,default="")
+    number_seats = models.IntegerField
+
+    def __str__(self):
+        return self.id
+
+class Passengers(models.Model):
+    id = models.AutoField
+    passenger_name = models.CharField(max_length=50,default="")
+    age = models.IntegerField
+    id_proof = models.CharField(max_length=50,default="")
+    contact_no = models.CharField(max_length=50, default="")
+    city = models.CharField(max_length=50,default="")
+    email = models.EmailField(max_length=254,default="")
+    password = models.CharField(max_length=30,default="")
+
+    def __str__(self):
+        return self.id
+
+class Bus_stops(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=50,default="")
+    location = models.CharField(max_length=50,default="")
+
+    def __str__(self):
+        return self.id
+
+class Bus_ticket(models.Model):
+    id = models.AutoField
+    alpha = models.CharField(max_length=50,default="")
+
+    def __str__(self):
+        return self.id
+
+class Route(models.Model):
+    id = models.AutoField
+    origin = models.CharField(max_length=50,default="")
+    destination = models.CharField(max_length=50,default="")
+    cost = models.IntegerField
+
+    def __str__(self):
+        return self.id
+
+class Schedules(models.Model):
+    id = models.AutoField
+    route = models.CharField(max_length=50,default="")
+    time = models.DateField()
+
+    def __str__(self):
+        return self.id
+
